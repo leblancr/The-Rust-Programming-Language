@@ -1,12 +1,14 @@
 #[derive(Debug)]
+
+// named types but no values
 struct Rectangle {
     width: u32,
     height: u32,
 }
 
-// put function in Rectangle struct (method)
-// like a method in a class
-// impl means put this function (method) in that struct
+// impliment functions in Rectangle struct, like methods in a class
+// impl means put these functions (methods) in that struct
+// impliment in Rectangle struct these methods
 impl Rectangle {
     fn area(&self) -> u32 {
         self.width * self.height
@@ -30,6 +32,8 @@ impl Rectangle {
 }
 
 fn main() {
+    // instantiate the struct by specifying
+    // concrete values for each of the fields
     let rect1 = Rectangle {
         width: 30,
         height: 50,
