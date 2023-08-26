@@ -1,4 +1,14 @@
 fn main() {
+    let config_max = Some(3u8);
+//    match config_max {
+//        Some(max) => println!("The maximum is configured to be {}", max),
+//        _ => (),
+//    }
+    // if config_max let Some() return avariable called max
+    if let Some(max) = config_max {
+        println!("The maximum is configured to be {}", max);
+    }
+
     let names = ["Beau", "Rich", "Mary"];
 
     // match on the return value of a function, an Option type
@@ -8,7 +18,7 @@ fn main() {
     for name in names {
         println!("{}'s occupation is {}", name,
         match get_occupation(&name) {
-            Some(occupation) => occupation,
+            Some(occupation) => occupation,  // if some value return a varible called occupation
             None => "no occupation"
         })
     }
@@ -24,7 +34,3 @@ fn get_occupation(name: &str) -> Option<&str> {
     }
 }
 
-//fn main() {
-//    let x: i8 = 5;
-//    let y: Option<i8> =
-//}
