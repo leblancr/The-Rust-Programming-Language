@@ -1,41 +1,32 @@
+use common_collections::{run_vector_code, run_string_code, run_hash_map_code};
+
+mod exercizes;
+
 fn main() {
-    let mut v = Vec::new();
+    //run_vector_code();
+    //run_string_code();
+    // run_hash_map_code()
 
-    v.push(5);
-    v.push(6);
-    v.push(7);
-    v.push(8);
-    println!("{:?}", v);
+    // exercises
+    // Given a list of integers, use a vector and return the median
+    // (when sorted, the value in the middle position) and mode
+    // (the value that occurs most often; a hash map will be helpful
+    // here) of the list. If even number of items avg of middle two.
     
-    let third: &i32 = &v[2];
-    println!("The third element is {third}");
+    // Get list of integers
+    let count = 11; // Number of random numbers
+    let min = 1;    // Minimum value
+    let max = 100;  // Maximum value
 
-    let third: Option<&i32> = v.get(2);
-    match third {
-        Some(third) => println!("The third element is {third}"),
-        None => println!("There is no third element."),
-    }
+    let integers = exercizes::get_list_of_integers(count, min, max);
+    //integers.sort();
+    println!("List of integers: {:?}", integers);
     
-    let mut v = vec![100, 32, 57];
-    println!("{:?}", v);
+    // get median
+    let median = exercizes::get_median(&integers);
+    println!("median: {:?}", median);
     
-    for i in &mut v {
-        *i += 50;
-    }
-    println!("{:?}", v);
-    
-    // vector with different types using enum
-    #[derive(Debug)]
-    enum SpreadsheetCell {
-        Int(i32),
-        Float(f64),
-        Text(String),
-    }
-
-    let v = vec![
-        SpreadsheetCell::Int(3),
-        SpreadsheetCell::Text(String::from("blue")),
-        SpreadsheetCell::Float(10.12),
-    ];
-    println!("{:?}", v);
+    // get mode
+    let mode = exercizes::get_mode(&integers);
+    println!("mode: {:?}", mode);
 }

@@ -102,13 +102,18 @@ pub fn run_hash_map_code() {
     common_collections::hash_maps::hash_map_code();
 }
 
+// generate list of random numbers that appear random number of times
 pub fn generate_random_numbers(count: usize, min: i32, max: i32) -> Vec<i32> {
     let mut rng = rand::thread_rng(); // Create a random number generator for the current thread
     let mut numbers = Vec::new();
 
     for _ in 0..count {
         let random_number = rng.gen_range(min..=max);
-        numbers.push(random_number);
+        let random_inner_number = rng.gen_range(0..max);
+        println!("{}", random_inner_number);
+        for _ in 0..random_inner_number {
+            numbers.push(random_number);
+        }
     }
 
     numbers
