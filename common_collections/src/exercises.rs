@@ -1,6 +1,8 @@
 use common_collections::generate_random_numbers;
+use std::collections::HashMap;
 
-pub fn get_list_of_integers(count: usize, min: i32, max: i32) -> Vec<i32> {
+pub fn
+get_list_of_integers(count: usize, min: i32, max: i32) -> Vec<i32> {
     let random_numbers = generate_random_numbers(count, min, max);
     // println!("Random numbers: {:?}", random_numbers);
     random_numbers
@@ -30,5 +32,25 @@ pub fn get_median(numbers: &Vec<i32>) -> i32 {
 // mode (the value that occurs most often;
 // hash map will be helpful here) of the list.
 pub fn get_mode(numbers: &Vec<i32>) -> i32 {
-    numbers[0]
+    let mut mode = 0;
+    let mut num_count: HashMap<i32, i32> = HashMap::new();
+
+    // key is number, value is how many times it's seen
+    // numbers is ref to vector
+    for number in numbers {
+        println!("{number}");
+        let count = num_count.entry(*number).or_insert(0); // count is ref to value
+        *count += 1;  // increment data in count reference
+    }
+
+    println!("{:?}", num_count);
+
+    for (key, value) in &num_count {
+        println!("{key}: {value}");
+        if value > &mode {
+            mode = *value
+        }
+    }
+    
+    mode
 }
