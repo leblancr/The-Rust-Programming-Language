@@ -109,12 +109,20 @@ pub fn generate_random_numbers(count: usize, min: i32, max: i32) -> Vec<i32> {
 
     for _ in 0..count {
         let random_number = rng.gen_range(min..=max);
+        // println!("random_number: {}", random_number);
+
+        if numbers.contains(&random_number){
+            // println!("continue");
+            continue
+        }
+
         let random_inner_number = rng.gen_range(0..max);
-        println!("{}", random_inner_number);
-        for _ in 0..random_inner_number {
+        //println!("random_inner_number: {}", random_inner_number);
+        for _i in 0..random_inner_number {
+            // println!("r: {} i: {}", random_number, i);
             numbers.push(random_number);
         }
     }
-
+    //println!("numbers: {:?}", numbers);
     numbers
 }

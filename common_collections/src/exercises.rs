@@ -32,25 +32,31 @@ pub fn get_median(numbers: &Vec<i32>) -> i32 {
 // mode (the value that occurs most often;
 // hash map will be helpful here) of the list.
 pub fn get_mode(numbers: &Vec<i32>) -> i32 {
-    let mut mode = 0;
+    let mut mode: i32 = 0;
     let mut num_count: HashMap<i32, i32> = HashMap::new();
 
     // key is number, value is how many times it's seen
     // numbers is ref to vector
+    //println!("numbers: {:?}", numbers);
     for number in numbers {
-        println!("{number}");
+        //println!("num_count: {:?}", num_count);
+        //println!("number: {number}");
         let count = num_count.entry(*number).or_insert(0); // count is ref to value
         *count += 1;  // increment data in count reference
+        //println!("number: {} count: {}", number, count);
+        if count > &mut mode {
+            mode = *count;
+        }
     }
 
     println!("{:?}", num_count);
 
-    for (key, value) in &num_count {
-        println!("{key}: {value}");
-        if value > &mode {
-            mode = *value
-        }
-    }
+//    for (key, value) in &num_count {
+//        println!("{key}: {value}");
+//        if value > &mode {
+//            mode = *value
+//        }
+//    }
     
     mode
 }
