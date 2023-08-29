@@ -3,9 +3,9 @@ use common_collections::{run_vector_code, run_string_code, run_hash_map_code};
 mod exercises;
 
 fn main() {
-    //run_vector_code();
-    //run_string_code();
-    // run_hash_map_code()
+//    run_vector_code();
+//    run_string_code();
+//    run_hash_map_code();
 
     // exercises
     // Given a list of integers, use a vector and return the median
@@ -20,13 +20,14 @@ fn main() {
 
     let integers = exercises::get_list_of_integers(count, min, max);
     //integers.sort();
-    println!("List of integers: {:?}", integers);
+    // println!("List of integers: {:?}", integers);
     
     // get median
     let median = exercises::get_median(&integers);
     println!("median: {:?}", median);
-    
+
     // get mode
+    //println!("integers: {:?}", integers);
     let mode = exercises::get_mode(&integers);
     println!("mode: {:?}", mode);
 }
