@@ -1,6 +1,6 @@
 use common_collections::{run_vector_code, run_string_code, run_hash_map_code};
 
-mod exercizes;
+mod exercises;
 
 fn main() {
     //run_vector_code();
@@ -18,15 +18,15 @@ fn main() {
     let min = 1;    // Minimum value
     let max = 100;  // Maximum value
 
-    let integers = exercizes::get_list_of_integers(count, min, max);
+    let integers = exercises::get_list_of_integers(count, min, max);
     //integers.sort();
     println!("List of integers: {:?}", integers);
     
     // get median
-    let median = exercizes::get_median(&integers);
+    let median = exercises::get_median(&integers);
     println!("median: {:?}", median);
     
     // get mode
-    let mode = exercizes::get_mode(&integers);
+    let mode = exercises::get_mode(&integers);
     println!("mode: {:?}", mode);
 }
