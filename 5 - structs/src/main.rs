@@ -6,6 +6,7 @@ use rand::Rng;
 struct Rectangle {
     width: u32,
     height: u32,
+    rects_that_fit: Vec<usize>, // Store indices instead of references
 }
 
 // implement functions in Rectangle struct, like methods in a class
@@ -30,6 +31,7 @@ impl Rectangle {
         Self {
             width: size,
             height: size,
+            rects_that_fit: vec![],
         }
     }
 }
@@ -48,6 +50,7 @@ fn main() {
         let rectangle_instance = Rectangle {
             width: random_width,
             height: random_height,
+            rects_that_fit: vec![],
         };
 
         // Add the instance to the vector
@@ -56,29 +59,61 @@ fn main() {
 
     println!("rectangles: {:?}", rectangles);
 
-    for rectangle in &rectangles {
-        println!("rectangle: {:?}", rectangle);
-        println!("rectangle area: {:?}", rectangle.area());
+    // Take each rectangle one by one and go through the whole list counting how many other
+    // rectangles fit into this one.
+    for i in 0..rectangles.len() {
+        println!("rectangle {i}: {:?}", rectangles[i]);
+        println!("rectangle {i} area: {:?}", rectangles[i].area());
 
         // See how many rectangles this one can hold
-        for rectangle2 in &rectangles {
-            println!("Can rect1 hold rect2? {}", rectangle.can_hold(&rectangle2));
+        for j in 0..rectangles.len() {
+            println!("Can rect {i} {}x{} {} hold rect {j} {}x{} {}? {}",
+                     rectangles[i].width,
+                     rectangles[i].height,
+                     rectangles[i].area(),
+                     rectangles[j].width,
+                     rectangles[j].height,
+                     rectangles[j].area(),
+                     rectangles[i].can_hold(&rectangles[j]));
+
+            if rectangles[i].can_hold(&rectangles[j]) {
+                // rectangles[i].fits += 1;
+                rectangles[i].rects_that_fit.push(j);
+            }
+        }
+        println!("rect {i} {}x{} {} can hold {} other rectangle{}",
+                 rectangles[i].width,
+                 rectangles[i].height,
+                 rectangles[i].area(),
+                 rectangles[i].rects_that_fit.len(),
+                 if rectangles[i].rects_that_fit.is_empty() || rectangles[i].rects_that_fit.len() > 1 {"s".to_string()} else {"".to_string()});
+
+        println!("rectangles that rect {i} can hold:");
+        for j in &rectangles[i].rects_that_fit {
+            // println!("{:?}:", rectangles[*j]);
+            println!("rect {j} {}x{} {}",
+                     rectangles[*j].width,
+                     rectangles[*j].height,
+                     rectangles[*j].area());
         }
     }
 
     let rect1 = Rectangle {
         width: 20,
         height: 30,
+        rects_that_fit: vec![],
     };
 
     let rect2 = Rectangle {
         width: 10,
         height: 40,
+        rects_that_fit: vec![],
     };
 
     let rect3 = Rectangle {
         width: 60,
         height: 45,
+        rects_that_fit: vec![],
     };
 
     let sq = Rectangle::square(3);  // returns an object with equal width/height
@@ -97,7 +132,4 @@ fn main() {
     
     println!("sq: {:?}", sq);
     println!("sq.area(): {}", sq.area());
-
-
-
 }
