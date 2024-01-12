@@ -1,3 +1,11 @@
+// concat the digits until non-digit found
+
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+
 fn main() {
     let txt1 = String::from("abc1def12ghi123jkl");
     let mut num_str = String::from("");
@@ -25,3 +33,4 @@ fn main() {
         }
     }
 }
+

@@ -80,7 +80,7 @@ mod common_collections {
 
 pub fn run_vector_code() {
     // Absolute path
-    // crate::common_collections::vectors::vector_code();
+    // crate::8 - common_collections::vectors::vector_code();
 
     // Relative path
     common_collections::vectors::vector_code();
@@ -88,7 +88,7 @@ pub fn run_vector_code() {
 
 pub fn run_string_code() {
     // Absolute path
-    // crate::common_collections::strings::string_code();
+    // crate::8 - common_collections::strings::string_code();
 
     // Relative path
     common_collections::strings::string_code();
@@ -96,7 +96,7 @@ pub fn run_string_code() {
 
 pub fn run_hash_map_code() {
     // Absolute path
-    // crate::common_collections::hash_maps::hash_map_code();
+    // crate::8 - common_collections::hash_maps::hash_map_code();
 
     // Relative path
     common_collections::hash_maps::hash_map_code();
