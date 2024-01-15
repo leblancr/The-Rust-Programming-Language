@@ -1,8 +1,7 @@
 use rand::Rng;
 
-#[derive(Debug)]
-
 // named types but no values
+#[derive(Debug)]
 struct Rectangle {
     width: u32,
     height: u32,
@@ -37,7 +36,7 @@ impl Rectangle {
 }
 
 fn main() {
-    let num_rectangles = 25;
+    let num_rectangles = 250;
     let mut rng = rand::thread_rng();
 
     // Create list of Rectangles with random width/height
@@ -62,12 +61,13 @@ fn main() {
     // Take each rectangle one by one and go through the whole list counting how many other
     // rectangles fit into this one.
     for i in 0..rectangles.len() {
-        println!("rectangle {i}: {:?}", rectangles[i]);
-        println!("rectangle {i} area: {:?}", rectangles[i].area());
+        println!("rectangle {i}: {:#?}", rectangles[i]);
+        println!("rectangle {i} area: {:?} pxls.", rectangles[i].area());
+        dbg!(rectangles[i].area());
 
         // See how many rectangles this one can hold
         for j in 0..rectangles.len() {
-            println!("Can rect {i} {}x{} {} hold rect {j} {}x{} {}? {}",
+            println!("Can rect {i} {}x{} {} pxls. hold rect {j} {}x{} {} pxls.? {}",
                      rectangles[i].width,
                      rectangles[i].height,
                      rectangles[i].area(),
